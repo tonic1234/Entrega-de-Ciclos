@@ -1,27 +1,25 @@
-alert("Adivina adivinador.Tenes 3 oportunidades para adivinar que numero del 0 al 20 elegí");
+const costoMano = 50
 
-let numero = Math.ceil(Math.random() * 20);
 
-for (let index = 0; index < 3; index++) {
-  let chance = 2 - index;
-  const entrada = prompt("Ingrese su numero");
-  if (chance == 0 && entrada != numero) {
-    alert("Game Over el numero era" + " " + numero);
-    break;
+alert("Calculador de presupuestos")
+alert("Ingrese el costo de los materiales en pesos")
+let cMateriales = parseInt(prompt("Costo de materiales"));
+alert(`Ingrese cantidad de horas que lleva el trabajo
+Si son menos de 3 horas la mano de obra cuesta el doble
+Si son mas de 8 horas la mano de obra tiene 10% de descuento`)
+let hTrabajo = parseInt(prompt("horas de trabajo"));
+
+
+
+
+function presupuesto() {
+  if (hTrabajo > 8) {
+    return (hTrabajo * (costoMano * 0.90)) + cMateriales;
+  } else if (hTrabajo <= 3) {
+    return (hTrabajo * (costoMano * 2)) + cMateriales;
+  } else {
+    return (hTrabajo * costoMano) + cMateriales;
   }
-  if (chance == 0 && entrada == numero) {
-    alert("El numero es correcto. Acertaste en tu ultima oportunidad. El numero era" + " " + numero);
-    break;
-  }
-  if (entrada == numero) {
-    alert("El numero es correcto. El numero era" + " " + numero);
-    break;
-  } else if (entrada > numero) {
-    alert("El numero es menor le quedan" + " " + chance + " " + "intentos");
-  } else if (entrada < numero) {
-    alert("El numero es mayor le quedan" + " " + chance + " " + "intentos");
-  }
+
 }
-
-
-
+alert("el costo del trabajo es de $" + presupuesto())
